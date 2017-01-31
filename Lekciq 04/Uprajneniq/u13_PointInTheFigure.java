@@ -23,6 +23,7 @@ public class u13_PointInTheFigure {
 
         if (isInFigure ) {
 
+
             boolean isDotOnBottomHalfBorder = IsDotOnBorder(parametersBottom);
             boolean isDotOnTopHalfBorder = IsDotOnBorder(parametersTop);
             boolean isDotOnBorder = isDotOnBottomHalfBorder || isDotOnTopHalfBorder;
