@@ -3,12 +3,12 @@ package Uprajneniq;
 import java.util.Scanner;
 
 /**
- * Created by todor on 23.01.2017 Ð³..
+ * Created by todor on 23.01.2017 Ó..
  */
 public class u13_PointInTheFigure {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in)
 
         int blockSize = Integer.parseInt(scan.nextLine());
         int dotX = Integer.parseInt(scan.nextLine());
