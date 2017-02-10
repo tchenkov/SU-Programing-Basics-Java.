@@ -14,87 +14,49 @@ public class u13_PointInTheFigure {
         int dotX = Integer.parseInt(scan.nextLine());
         int dotY = Integer.parseInt(scan.nextLine());
 
-        int parametersBottom[] = FigureParameters(blockSize, dotX, dotY, true);
-        int parametersTop[] = FigureParameters(blockSize, dotX, dotY, false);
+        boolean isDotInFigure = IsDotInsideFigure(blockSize, dotX, dotY);
+        boolean isDotOutsideOfFigure = IsDotOutsideFigure(blockSize, dotX, dotY);
 
-        boolean isDotInBottomHalf = IsDotInsideHalfFigure(parametersBottom);
-        boolean isDotInTopHalfI = IsDotInsideHalfFigure(parametersTop);
-        boolean isInFigure = isDotInBottomHalf || isDotInTopHalfI;
-
-        if (isInFigure ) {
-
-            boolean isDotOnBottomHalfBorder = IsDotOnBorder(parametersBottom);
-            boolean isDotOnTopHalfBorder = IsDotOnBorder(parametersTop);
-            boolean isDotOnBorder = isDotOnBottomHalfBorder || isDotOnTopHalfBorder;
-
-            int commonLineX1 = blockSize;
-            int commonLineX2 = blockSize * 2;
-            int commonLineY = blockSize;
-            boolean isDotOnCommonSide = dotY == commonLineY && (commonLineX1 < dotX && dotX < commonLineX2);
-            if (isDotOnBorder && !isDotOnCommonSide) {
-                System.out.println("border");
-            }
-            else {
-                System.out.println("inside");
-            }
-
+        if (isDotInFigure ) {
+            System.out.println("inside");
         }
-        else {
+        else if (isDotOutsideOfFigure){
             System.out.println("outside");
         }
-    }
-
-    static boolean IsDotInsideHalfFigure(int figureAndDotCoordinates[]) {
-
-        int x1 = figureAndDotCoordinates[0];
-        int y1 = figureAndDotCoordinates[1];
-        int x2 = figureAndDotCoordinates[2];
-        int y2 = figureAndDotCoordinates[3];
-        int x = figureAndDotCoordinates[4];
-        int y = figureAndDotCoordinates[5];
-
-        boolean isInRectangle = (x1 <= x && x <= x2) && (y1 <= y && y <= y2);
-
-        return  isInRectangle;
-    }
-
-    static boolean IsDotOnBorder(int figureAndDotCoordinates[]) {
-        int x1 = figureAndDotCoordinates[0];
-        int y1 = figureAndDotCoordinates[1];
-        int x2 = figureAndDotCoordinates[2];
-        int y2 = figureAndDotCoordinates[3];
-        int x = figureAndDotCoordinates[4];
-        int y = figureAndDotCoordinates[5];
-
-        boolean isOnLeftBorder = x == x1 && (y1 <= y && y <= y2);
-        boolean isOnRightBorder = x == x2 && (y1 <= y && y <= y2);
-        boolean isOnTopBorder = y == y1 && (x1 <= x && x <= x2);
-        boolean isOnBottomBorder = y == y2 && (x1 <= x && x <= x2);
-
-        boolean isOnAnyBorder = isOnLeftBorder || isOnRightBorder || isOnTopBorder || isOnBottomBorder;
-
-        return isOnAnyBorder;
-    }
-
-    static int[] FigureParameters (int size, int dotX, int dotY, boolean isBottom) {
-
-        int[] parameters = new int[6];
-        if (isBottom) {
-            parameters[0] = 0;
-            parameters[1] = 0;
-            parameters[2] = size * 3;
-            parameters[3] = size;
-        }
         else {
-            parameters[0] = size;
-            parameters[1] = size;
-            parameters[2] = size * 2;
-            parameters[3] = size * 4;
+            System.out.println("border");
         }
+    }
 
-        parameters[4] = dotX;
-        parameters[5] = dotY;
+    static boolean IsDotInsideFigure(int size, int dotCoordinateX, int dotCoordinateY) {
 
-        return parameters;
+        // Bottom Half of the figure
+        //(x1 < x && x < x2) && (y1 < y && y < y2);
+        boolean isDotInBottomFigure = (0 < dotCoordinateX && dotCoordinateX < (size * 3)) &&
+                                      (0 < dotCoordinateY && dotCoordinateY < size);
+        // Top Half of the figure
+        //(x1 < x && x < x2) && (y1 <= y && y < y2);
+        boolean isDotInTopFigure = (size < dotCoordinateX && dotCoordinateX < (size * 2)) &&
+                                   (size <= dotCoordinateY && dotCoordinateY < (size * 4));
+
+        boolean isInsideFigure = isDotInBottomFigure || isDotInTopFigure;
+
+        return  isInsideFigure;
+    }
+
+    static boolean IsDotOutsideFigure(int size, int dotCoordinateX, int dotCoordinateY) {
+
+        // Bottom Half of the figure
+        //(x < x1 || x2 < x) || (y < y1 || y2 < y);
+        boolean isDotOutsideBottomFigure = (dotCoordinateX < 0 || (size * 3 < dotCoordinateX)) ||
+                (dotCoordinateY < 0 || size < dotCoordinateY);
+        // Top Half of the figure
+        //(x < x1 || x2 < x) || (y < y1 || y2 < y);
+        boolean isDotOutsideTopFigure = (dotCoordinateX < size || (size * 2) < dotCoordinateX) ||
+                (dotCoordinateY < size || (size * 4) < dotCoordinateY);
+
+        boolean isDotOutsideFigure = isDotOutsideBottomFigure && isDotOutsideTopFigure;
+
+        return  isDotOutsideFigure;
     }
 }

@@ -13,8 +13,8 @@ public class u15_Trip {
         double spendingMoney = Double.parseDouble(scan.nextLine());
         String season = scan.nextLine().toLowerCase();
 
-        double tripCost = 0;
-
+        double tripCost = 0.0;
+//
         if (spendingMoney > 0) {
             System.out.print("Somewhere in ");
             if (spendingMoney <= 100) {
@@ -22,20 +22,24 @@ public class u15_Trip {
                 if (season.equals("summer")) {
                     tripCost = spendingMoney * 0.3;
                     System.out.printf("Camp - %.2f", tripCost);
-                } else if (season.equals("winter")) {
+                }
+                else if (season.equals("winter")) {
                     tripCost = spendingMoney * 0.7;
                     System.out.printf("Hotel - %.2f", tripCost);
                 }
-            } else if (spendingMoney > 1000) {
+            }
+            else if (spendingMoney > 1000) {
                 tripCost = spendingMoney * 0.9;
                 System.out.println("Europe");
                 System.out.printf("Hotel - %.2f", tripCost);
-            } else {
+            }
+            else {
                 System.out.println("Balkans");
                 if (season.equals("summer")) {
                     tripCost = spendingMoney * 0.4;
                     System.out.printf("Camp - %.2f", tripCost);
-                } else if (season.equals("winter")) {
+                }
+                else if (season.equals("winter")) {
                     tripCost = spendingMoney * 0.8;
                     System.out.printf("Hotel - %.2f", tripCost);
                 }
