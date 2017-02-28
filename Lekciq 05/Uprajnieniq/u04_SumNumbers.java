@@ -14,10 +14,9 @@ public class u04_SumNumbers {
         int sum = 0;
 
         for (int i = 0; i < numberCount; i++) {
-            int currentNumber = Integer.parseInt(scan.nextLine());
-            sum += currentNumber;
+            sum += Integer.parseInt(scan.nextLine());
         }
-
+        
         System.out.println(sum);
     }
 }
