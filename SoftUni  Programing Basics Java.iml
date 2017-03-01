@@ -8,10 +8,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Lekciq 03" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lekciq 04" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Lekciq 05" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Lekciq 06" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/out" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/Playground" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Lekciq 07" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Lekciq 05" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
