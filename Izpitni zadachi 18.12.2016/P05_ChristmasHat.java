@@ -30,10 +30,12 @@ public class P05_ChristmasHat {
     }
     
     static String stringRepeater (String stringToRepeat, int stringRepeatCount){
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < stringRepeatCount; i++) {
-            sb.append(stringToRepeat);
+        int strLength = stringToRepeat.length() * stringRepeatCount;
+        do {
+            StringBuilder sb = new StringBuilder(stringToRepeat);
+            stringToRepeat = sb.append(stringToRepeat).toString();
         }
-        return sb.toString();
+        while (stringToRepeat.length() < strLength);
+        return stringToRepeat.substring(0, strLength);
     }
 }
