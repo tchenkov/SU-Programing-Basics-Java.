@@ -8,14 +8,15 @@ public class P05_ChristmasHat {
         Scanner scan = new Scanner(System.in);
         
         int hatSize = Integer.parseInt(scan.nextLine());
-        
-        String dotsStarDashString = stringRepeater(".", hatSize * 2 - 1) +
-                "*" + stringRepeater("-", hatSize * 2 - 1);
+        int hatWidth = hatSize * 2 - 1;
+    
+        String dotsStarDashString = stringRepeater(".", hatWidth) +
+                "*" + stringRepeater("-", hatWidth);
         String starsString = stringRepeater("*", hatSize * 4 + 1);
         String starsDotsString = stringRepeater("*.", hatSize * 2) + "*";
     
-        System.out.printf("%s/|\\%<s%n", dotsStarDashString.substring(0, hatSize *2 - 1));
-        System.out.printf("%s\\|/%<s%n", dotsStarDashString.substring(0, hatSize *2 - 1));
+        System.out.printf("%s/|\\%<s%n", dotsStarDashString.substring(0, hatWidth));
+        System.out.printf("%s\\|/%<s%n", dotsStarDashString.substring(0, hatWidth));
     
         for (int i = 0; i < hatSize * 2; i++) {
             StringBuilder sb = new StringBuilder(dotsStarDashString.substring(i,hatSize *2 + i));
